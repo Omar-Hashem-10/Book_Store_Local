@@ -9,4 +9,13 @@ class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'discount_id'
+    ];
+
+    public function discount() {
+        return $this->belongsTo(Discount::class);
+    }
 }
