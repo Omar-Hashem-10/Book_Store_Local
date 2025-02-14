@@ -23,8 +23,35 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            'name' => ['required','string','min:5', 'max:255', Rule::unique(Category::class)->ignore(request()->category_id)],
+            'name.en' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                function ($value, $fail) {
+                    if (Category::whereJsonContains('name->en', $value)
+                        ->where('id', '!=', request()->category_id)
+                        ->exists()) {
+                        $fail('The English name has already been taken.');
+                    }
+                }
+            ],
+            'name.ar' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                function ($value, $fail) {
+                    if (Category::whereJsonContains('name->ar', $value)
+                        ->where('id', '!=', request()->category_id)
+                        ->exists()) {
+                        $fail('The Arabic name has already been taken.');
+                    }
+                }
+            ],
         ];
+
     }
 }

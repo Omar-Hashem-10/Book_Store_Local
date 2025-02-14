@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -309,6 +309,23 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        [
+            'type' => 'submenue',
+            'text' => 'Language',
+            'topnav_right' => true,
+            'submenu' => [
+                [
+                    'text' => 'English',
+                    'icon' => 'flag-icon flag-icon-us',
+                    'url'  => 'dashboard/change-language/en'
+                ],
+                [
+                    'text' => 'Arabic',
+                    'icon' => 'flag-icon flag-icon-eg',
+                    'url'  => 'dashboard/change-language/ar'
+                ],
+            ]
+        ],
 
         // Sidebar items:
         [
@@ -323,12 +340,32 @@ return [
         [
             'text' => 'Discounts',
             'url' => 'dashboard/discount',
-            'icon' => 'fas fa-percent',
+            'icon' => 'fas fa-tag',
+            'submenu' => [
+                [
+                    'text' => 'discounts',
+                    'url' => 'dashboard/discount'
+                ],
+                [
+                    'text' => 'create discount',
+                    'url' => 'dashboard/discount/create'
+                ]
+            ]
         ],
         [
             'text' => 'Categories',
             'url' => 'dashboard/category',
             'icon' => 'fas fa-list',
+            'submenu' => [
+                [
+                    'text' => 'categories',
+                    'url' => 'dashboard/category'
+                ],
+                [
+                    'text' => 'create category',
+                    'url' => 'dashboard/category/create'
+                ]
+            ]
         ],
         // ['header' => 'account_settings'],
         // [
@@ -499,6 +536,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'FlagIconCSS' => [
+            'active' => true, // Set to true to enable the plugin
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/flag-icon-css/css/flag-icons.min.css',
                 ],
             ],
         ],

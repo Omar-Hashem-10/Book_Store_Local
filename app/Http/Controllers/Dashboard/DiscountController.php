@@ -12,9 +12,9 @@ class DiscountController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discounts = Discount::orderBy('id', 'DESC')->paginate();
+        $discounts = Discount::filter($request->all())->orderBy('id', 'DESC')->paginate();
         return view('dashboard.discount.index', compact('discounts'));
     }
 

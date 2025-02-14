@@ -1,29 +1,34 @@
-@extends('adminlte::page')
+@extends('dashboard.layout')
 
 @section('title', 'Discount')
 
 @section('content_header')
-<div class="d-flex justify-content-between">
-    <h1>Discount</h1>
-    <a href="{{route('dashboard.discount.create')}}" class="btn btn-success btn-lg">
-        <i class="fas fa-plus"></i>
-        Create
-    </a>
-</div>
-@stop
-
-@section('content')
-<table class="table">
-    <thead>
+    <x-header>
+        <x-slot:title>
+            {{__('adminlte::adminlte.' . capitalize(last(generate_breadcrumbs())['text']))}}
+        </x-slot:title>
+        <x-slot:actions>
+            <a href="{{ route('dashboard.discount.create') }}" class="btn btn-success btn-lg">
+                <i class="fas fa-plus"></i>
+                {{ __('actions.create') }}
+            </a>
+        </x-slot:actions>
+    </x-header>
+    <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
+    @stop
+    @section('content')
+    @include('dashboard.discount.partials.filter')
+    <table class="table">
+        <thead>
         <tr>
-            <th>ID</th>
-            <th>Code</th>
-            <th>Quantity</th>
-            <th>Percentage</th>
-            <th>Expiry Date</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Actions</th>
+            <th>{{__('discount.id')}}</th>
+            <th>{{__('discount.code')}}</th>
+            <th>{{__('discount.quantity')}}</th>
+            <th>{{__('discount.percentage')}}</th>
+            <th>{{__('discount.expiry_date')}}</th>
+            <th>{{__('actions.created_at')}}</th>
+            <th>{{__('actions.updated_at')}}</th>
+            <th>{{__('actions.actions')}}</th>
         </tr>
     </thead>
     <tbody>
@@ -37,21 +42,8 @@
                 <td>{{ $discount->created_at }}</td>
                 <td>{{ $discount->updated_at }}</td>
                 <td style="display: flex; gap: 12px;">
-                    <a href="{{route('dashboard.discount.show', $discount->id)}}">
-                        <x-adminlte-button theme="outline-primary" class="btn-flate" type="submit" label="View"/>
-                    </a>
-                    <a href="{{route('dashboard.discount.edit', $discount->id)}}">
-                        <x-adminlte-button theme="outline-warning" class="btn-flate" type="submit" label="Edit"/>
-                    </a>
-                    <form action="{{route('dashboard.discount.destroy', $discount->id)}}" method="POST" style="margin: 0;">
-                        @csrf
-                        @method('DELETE')
-                        <x-adminlte-button theme="outline-danger" class="btn-flate" type="submit" label="Delete"/>
-                    </form>
+                    @include('dashboard.partials.actions', ['resource_name' => 'discount', 'resource' => $discount->id])
                 </td>
-
-
-
             </tr>
         @endforeach
     </tbody>

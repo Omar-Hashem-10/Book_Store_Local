@@ -16,4 +16,11 @@ return [
     'important' => 'Important',
     'warning' => 'Warning',
     'information' => 'Information',
+    'Discounts' => 'Discounts',
+    'discounts' => 'discounts',
+    'create discount' => 'create discount',
+    'Categories' => 'Categories',
+    'categories' => 'categories',
+    'create category' => 'create category',
+    'Language' => 'Language'
 ];
