@@ -26,4 +26,10 @@ return [
     'Create' => 'انشاء',
     'Creates' => 'انشاء',
     'Edits' => 'تعديل',
+    'Author' => 'المؤلفون',
+    'Authors' => 'المؤلفون',
+    'Publisher' => 'الناشر',
+    'Publishers' => 'الناشرون',
+    'Flash-sale' => 'العرض',
+    'Flash-sales' => 'العروض',
 ];

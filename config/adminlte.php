@@ -367,6 +367,51 @@ return [
                 ]
             ]
         ],
+        [
+            'text' => 'Authors',
+            'url' => 'dashboard/author',
+            'icon' => 'fas fa-pen-nib',
+            'submenu' => [
+                [
+                    'text' => 'authors',
+                    'url' => 'dashboard/author'
+                ],
+                [
+                    'text' => 'create author',
+                    'url' => 'dashboard/author/create'
+                ]
+            ]
+        ],
+        [
+            'text' => 'Publishers',
+            'url' => 'dashboard/publisher',
+            'icon' => 'fas fa-book-open',
+            'submenu' => [
+                [
+                    'text' => 'publishers',
+                    'url' => 'dashboard/publisher'
+                ],
+                [
+                    'text' => 'create publisher',
+                    'url' => 'dashboard/publisher/create'
+                ]
+            ]
+        ],
+        [
+            'text' => 'Flash Sales',
+            'url' => 'dashboard/flash-sale',
+            'icon' => 'fas fa-book-open',
+            'submenu' => [
+                [
+                    'text' => 'flash sales',
+                    'url' => 'dashboard/flash-sale'
+                ],
+                [
+                    'text' => 'create flash sale',
+                    'url' => 'dashboard/flash-sale/create'
+                ]
+            ]
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

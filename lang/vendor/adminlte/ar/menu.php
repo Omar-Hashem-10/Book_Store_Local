@@ -22,5 +22,14 @@ return [
     'Categories' => 'الفئات',
     'categories' => 'الفئات',
     'create category' => 'انشاء فئة',
-    'Language' => 'اللغة'
+    'Language' => 'اللغة',
+    'Authors' => 'المؤلفون',
+    'authors' => 'المؤلفون',
+    'create author' => 'انشاء مؤلف',
+    'Publishers' => 'الناشرون',
+    'publishers' => 'الناشرون',
+    'create publisher' => 'انشاء ناشر',
+    'Flash Sales' => 'العروض',
+    'flash sales' => 'العروض',
+    'create flash sale' => 'انشاء عرض',
 ];

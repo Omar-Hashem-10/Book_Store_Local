@@ -22,5 +22,14 @@ return [
     'Categories' => 'Categories',
     'categories' => 'categories',
     'create category' => 'create category',
-    'Language' => 'Language'
+    'Language' => 'Language',
+    'Authors' => 'Authors',
+    'authors' => 'authors',
+    'create author' => 'create author',
+    'Publishers' => 'Publishers',
+    'publishers' => 'publishers',
+    'create publisher' => 'create publisher',
+    'Flash Sales' => 'Flash Sales',
+    'flash sales' => 'flash sales',
+    'create flash sale' => 'create flash sale',
 ];

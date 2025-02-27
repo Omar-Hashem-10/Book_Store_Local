@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Publisher;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PublisherSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class PublisherSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Publisher::factory(50)->create();
     }
 }
