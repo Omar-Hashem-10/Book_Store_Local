@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<form action="{{route('dashboard.category.store')}}" method="POST">
+<form action="{{route('dashboard.category.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row justify-content-start">
         <x-adminlte-input name="name[en]" label="{{__('category.name_english')}}" value="{{ old('name.en') }}" type="text"
@@ -16,6 +16,8 @@
         <x-adminlte-input name="name[ar]" label="n{{__('category.name_arabic')}}" value="{{ old('name.ar') }}" type="text"
             placeholder="Enter category name arabic" fgroup-class="col-md-4" />
     </div>
+
+    <x-image-preview name="image"/>
 
     <div class="row mt-3">
         <div class="col-12">

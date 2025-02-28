@@ -6,6 +6,7 @@ return [
     "name_arabic" => 'Name Arabic',
     "discount" => 'Discount',
     "name" => 'Name',
-    "name_placeholder" => 'Enter Category Name'
+    "name_placeholder" => 'Enter Category Name',
+    "image" => 'Image'
 
 ];

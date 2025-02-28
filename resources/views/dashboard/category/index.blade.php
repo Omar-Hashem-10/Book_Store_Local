@@ -23,6 +23,7 @@
     <thead>
         <tr>
             <th>{{__('category.id')}}</th>
+            <th>{{__('category.image')}}</th>
             <th>{{__('category.name_english')}}</th>
             <th>{{__('category.name_arabic')}}</th>
             <th>{{__('category.discount')}}</th>
@@ -36,6 +37,13 @@
         @foreach ($categories as $category)
             <tr>
                 <td>{{ $category->id }}</td>
+                <td>
+                    @if ($category->getFirstMediaUrl('image','preview'))
+                        <img src="{{ $category->getFirstMediaUrl('image','preview')}}"
+                            alt="Thumbnail"
+                            style="width: 200px; height: 100px; object-fit: contain;">
+                    @endif
+                </td>
                 <td> {{ $category->getTranslation('name','en') }}</td>
                 <td> {{ $category->getTranslation('name','ar') }}</td>
                 <td>{{ $category->discount?->code }}</td>

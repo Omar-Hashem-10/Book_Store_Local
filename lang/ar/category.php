@@ -6,5 +6,7 @@ return [
     "name_arabic" => 'الاسم العربي',
     "discount" => 'الخصم',
     "name" => 'الاسم',
-    "name_placeholder" => 'ادخل اسم الفئة'
+    "name_placeholder" => 'ادخل اسم الفئة',
+    "image" => 'الصوره'
+
 ];

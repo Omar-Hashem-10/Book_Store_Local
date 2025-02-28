@@ -33,7 +33,11 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::create($request->validated());
+        $category = Category::create($request->except('_token'));
+
+        $category->addMediaFromRequest('image')
+        ->toMediaCollection('image');
+
         return redirect()->route('dashboard.category.index');
     }
 

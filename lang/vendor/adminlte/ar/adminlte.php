@@ -32,4 +32,6 @@ return [
     'Publishers' => 'الناشرون',
     'Flash-sale' => 'العرض',
     'Flash-sales' => 'العروض',
+    'upload_image' => 'رفع الصوره'
+
 ];

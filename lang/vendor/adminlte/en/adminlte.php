@@ -39,5 +39,6 @@ return [
     'Publisher' => 'Publisher',
     'Publishers' => 'Publishers',
     'Flash-sale' => 'Flash-sale',
-    'Flash-sales' => 'Flash-sales'
+    'Flash-sales' => 'Flash-sales',
+    'upload_image' => 'Upload Image'
 ];
