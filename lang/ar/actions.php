@@ -11,4 +11,7 @@ return [
     "actions" => 'الإجراءات',
     'filter' => 'بحث',
     'reset' => 'مسح',
+    'delete_selected' => 'مسح المحدد',
+    'export' => 'استخراج اكسل',
+    'import' => 'ادخال اكسل',
 ];

@@ -1,0 +1,92 @@
+const codeElement = document.querySelector('input[name=code]');
+const generateCodeElement = document.querySelector('#generate-code');
+
+if (generateCodeElement) {
+    generateCodeElement.addEventListener('click', insertCode);
+}
+
+async function insertCode() {
+    const code = generateDiscountCode();
+    const checkCodeUrl = '{{ route("discount.check.code") }}';
+
+    try {
+        const is_exist = await checkCodeAvailable(checkCodeUrl, code);
+        if (!is_exist) {
+            codeElement.value = code;
+        }
+    } catch (error) {
+        console.error("Error checking code:", error);
+    }
+}
+
+async function checkCodeAvailable(url, code) {
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ code })
+        });
+
+        const data = await response.json();
+        return data.data.is_exist;
+    } catch (error) {
+        console.error("Fetch error:", error);
+        return false;
+    }
+}
+
+function generateDiscountCode() {
+    const prefix = 'DISCOUNT';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = prefix;
+
+    for (let i = 0; i < 4; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        code += characters[randomIndex];
+    }
+
+    return code;
+}
+
+
+const deleteBtn = document.getElementById('delete-btn'); // بدون #
+if (deleteBtn) {
+    deleteBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                }).then(() => {
+                    document.querySelector('#delete-form').submit();
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    icon: "error"
+                });
+            }
+        });
+    });
+}

@@ -50,3 +50,5 @@
 </table>
 {{ $discounts->links() }}
 @stop
+
+

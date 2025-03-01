@@ -11,4 +11,7 @@ return [
     "actions" => 'Actions',
     'filter' => 'Filter',
     'reset' => 'Reset',
+    'delete_selected' => 'Delete Selected',
+    'export' => 'Export',
+    'import' => 'Imort',
 ];

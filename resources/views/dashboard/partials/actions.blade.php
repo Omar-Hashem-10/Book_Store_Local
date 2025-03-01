@@ -4,8 +4,8 @@
 <a href="{{route('dashboard.'.$resource_name.'.edit', $resource)}}">
     <x-adminlte-button theme="outline-warning" class="btn-flate" type="submit" label="{{__('actions.edit')}}"/>
 </a>
-<form action="{{route('dashboard.'.$resource_name.'.destroy', $resource)}}" method="POST" style="margin: 0;">
+<form action="{{route('dashboard.'.$resource_name.'.destroy', $resource)}}" method="POST" id="delete-form" style="margin: 0;">
     @csrf
     @method('DELETE')
-    <x-adminlte-button theme="outline-danger" class="btn-flate" type="submit" label="{{__('actions.delete')}}"/>
+     <x-adminlte-button theme="outline-danger" type="submit" id="delete-btn" label="{{ __('actions.delete')}}"/>
 </form>
