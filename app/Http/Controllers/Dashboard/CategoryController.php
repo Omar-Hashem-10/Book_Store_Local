@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $category->addMediaFromRequest('image')
         ->toMediaCollection('image');
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.category.index')->with('success', 'Category Created Successfully');
     }
 
     /**

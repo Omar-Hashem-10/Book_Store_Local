@@ -28,4 +28,25 @@
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
+    <script>
+    @if (session('success'))
+        Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "{{session('success')}}",
+        time: 300,
+        showConfirmButton: false
+    });
+@endif
+    @if (session('error'))
+        Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "{{session('error')}}",
+        time: 300,
+        showConfirmButton: false
+    });
+@endif
+    </script>
     @endpush
