@@ -70,6 +70,5 @@
             deleteButton.disabled = !event.target.checked;
         }
 
-
     </script>
 @endpush

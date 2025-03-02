@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
+use App\Models\Author;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class CategoryImport implements ToModel
+class AuthorImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,6 +14,7 @@ class CategoryImport implements ToModel
     */
 
     private $rowIndex = 0;
+
     public function model(array $row)
     {
         $this->rowIndex++;
@@ -22,11 +23,8 @@ class CategoryImport implements ToModel
             return null;
         }
 
-        return new Category([
-            'name' => [
-                'en' => $row[0],
-                'ar' => $row[1]
-            ]
+        return new Author([
+            'name' => $row[0]
         ]);
     }
 }

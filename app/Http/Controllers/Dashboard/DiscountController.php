@@ -32,7 +32,7 @@ class DiscountController extends Controller
     public function store(DiscountRequest $request)
     {
         Discount::create($request->validated());
-        return redirect()->route('dashboard.discount.index');
+        return redirect()->route('dashboard.discount.index')->with('success', 'Discount Created Successfully');
     }
 
     /**
@@ -58,7 +58,7 @@ class DiscountController extends Controller
     {
         $discount->update($request->validated());
 
-        return redirect()->route('dashboard.discount.index');
+        return redirect()->route('dashboard.discount.index')->with('success', 'Discount Updated Successfully');
     }
 
     /**

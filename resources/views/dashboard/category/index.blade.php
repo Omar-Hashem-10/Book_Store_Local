@@ -23,6 +23,7 @@
     <div class="d-flex col-3 justify-content-around my-2">
         <x-delete-selected model="Category" />
         <x-import-excel model="Category" />
+        <x-export-excel model="Category" />
     </div>
 <table class="table">
     <thead>
@@ -56,17 +57,7 @@
                 <td>{{ $category->created_at }}</td>
                 <td>{{ $category->updated_at }}</td>
                 <td style="display: flex; gap: 12px;">
-                    <a href="{{route('dashboard.category.show', $category->id)}}">
-                        <x-adminlte-button theme="outline-primary" class="btn-flate" type="submit" label="{{__('actions.view')}}"/>
-                    </a>
-                    <a href="{{route('dashboard.category.edit', $category->id)}}">
-                        <x-adminlte-button theme="outline-warning" class="btn-flate" type="submit" label="{{__('actions.edit')}}"/>
-                    </a>
-                    <form action="{{route('dashboard.category.destroy', $category->id)}}" method="POST" style="margin: 0;">
-                        @csrf
-                        @method('DELETE')
-                        <x-adminlte-button theme="outline-danger" class="btn-flate" type="submit" label="{{__('actions.delete')}}"/>
-                    </form>
+                    @include('dashboard.partials.actions', ['resource_name' => 'category', 'resource' => $category->id])
                 </td>
             </tr>
         @endforeach

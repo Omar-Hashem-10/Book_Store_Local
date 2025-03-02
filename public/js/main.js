@@ -51,7 +51,7 @@ function generateDiscountCode() {
 }
 
 
-const deleteBtn = document.getElementById('delete-btn'); // بدون #
+const deleteBtn = document.getElementById('delete-btn');
 if (deleteBtn) {
     deleteBtn.addEventListener('click', function (event) {
         event.preventDefault();

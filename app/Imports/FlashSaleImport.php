@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
+use App\Models\FlashSale;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class CategoryImport implements ToModel
+class FlashSaleImport implements ToModel
 {
     /**
     * @param array $row
@@ -22,11 +22,18 @@ class CategoryImport implements ToModel
             return null;
         }
 
-        return new Category([
+        return new FlashSale([
             'name' => [
                 'en' => $row[0],
                 'ar' => $row[1]
-            ]
+            ],
+            'description' => [
+                'en' => $row[2],
+                'ar' => $row[3]
+            ],
+            'date' => $row[4],
+            'time' => $row[5],
+            'is_active' => $row[6]
         ]);
     }
 }

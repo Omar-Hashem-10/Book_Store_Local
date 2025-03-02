@@ -15,17 +15,23 @@
         </x-slot:actions>
     </x-header>
     <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
+    @include('dashboard.flash-sale.partials.filter')
 @endsection
 
 @section('content')
-
+<div class="d-flex col-3 justify-content-around my-2">
+    <x-delete-selected model="FlashSale" />
+    <x-import-excel model="FlashSale" />
+    <x-export-excel model="FlashSale" />
+</div>
 <table class="table">
-    @include('dashboard.flash-sale.partials.filter')
     <thead>
         <tr>
+            <th><input type="checkbox" id="select-all"></th>
             <th>{{__('flash-sale.id')}}</th>
             <th>{{__('flash-sale.name')}}</th>
             <th>{{__('flash-sale.description')}}</th>
+            <th>{{__('flash-sale.image')}}</th>
             <th>{{__('flash-sale.date')}}</th>
             <th>{{__('flash-sale.time')}}</th>
             <th>{{__('flash-sale.is_active')}}</th>
@@ -37,9 +43,18 @@
     <tbody>
     @foreach ($flash_sales as $flash_sale)
             <tr>
+                <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sale->id }}"></td>
+
                 <td>{{ $flash_sale->id }}</td>
                 <td>{{ $flash_sale->name }}</td>
                 <td>{{ $flash_sale->description }}</td>
+                <td>
+                    @if ($flash_sale->getFirstMediaUrl('image','preview'))
+                        <img src="{{ $flash_sale->getFirstMediaUrl('image','preview')}}"
+                            alt="Thumbnail"
+                            style="width: 200px; height: 100px; object-fit: contain;">
+                    @endif
+                </td>
                 <td>{{ $flash_sale->date }}</td>
                 <td>{{ $flash_sale->time }}</td>
                 <td>{{ $flash_sale->is_active }}</td>

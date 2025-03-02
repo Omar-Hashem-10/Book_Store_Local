@@ -31,4 +31,19 @@ class FlashSaleFilter extends ModelFilter
                 ->orWhereLike('description->ar',  "%$description%");
         });
     }
+
+    public function date($date)
+    {
+        return $this->whereLike('date', "$date%");
+    }
+
+    public function time($time)
+    {
+        return $this->whereLike('time', "$time%");
+    }
+
+    public function isActive($is_active)
+    {
+        return $this->whereLike('is_active', "$is_active%");
+    }
 }

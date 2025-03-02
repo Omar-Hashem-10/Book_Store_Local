@@ -32,7 +32,7 @@ class AuthorController extends Controller
     public function store(AuthorRequest $request)
     {
         Author::create($request->validated());
-        return redirect()->route('dashboard.author.index');
+        return redirect()->route('dashboard.author.index')->with('success', 'Author Created Successfully');
     }
 
     /**
@@ -57,7 +57,7 @@ class AuthorController extends Controller
     public function update(AuthorRequest $request, Author $author)
     {
         $author->update($request->validated());
-        return redirect()->route('dashboard.author.index');
+        return redirect()->route('dashboard.author.index')->with('success', 'Author Updated Successfully');;
     }
 
     /**

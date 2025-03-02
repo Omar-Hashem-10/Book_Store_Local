@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
+use App\Models\Discount;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class CategoryImport implements ToModel
+class DiscountImport implements ToModel
 {
     /**
     * @param array $row
@@ -22,11 +22,11 @@ class CategoryImport implements ToModel
             return null;
         }
 
-        return new Category([
-            'name' => [
-                'en' => $row[0],
-                'ar' => $row[1]
-            ]
+        return new Discount([
+            'code' => $row[0],
+            'quantity' => $row[1],
+            'percentage' => $row[2],
+            'expiry_date' => $row[3]
         ]);
     }
 }

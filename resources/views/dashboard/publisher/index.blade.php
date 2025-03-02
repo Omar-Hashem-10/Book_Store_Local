@@ -15,13 +15,19 @@
         </x-slot:actions>
     </x-header>
     <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
+    @include('dashboard.publisher.partials.filter')
 @endsection
 
 @section('content')
-@include('dashboard.publisher.partials.filter')
+<div class="d-flex col-3 justify-content-around my-2">
+    <x-delete-selected model="Publisher" />
+    <x-import-excel model="Publisher" />
+    <x-export-excel model="Publisher" />
+</div>
     <table class="table">
         <thead>
         <tr>
+            <th><input type="checkbox" id="select-all"></th>
             <th>{{__('publisher.id')}}</th>
             <th>{{__('publisher.name')}}</th>
             <th>{{__('actions.created_at')}}</th>
@@ -32,6 +38,7 @@
     <tbody>
         @foreach ($publishers as $publisher)
             <tr>
+                <td><input type="checkbox" class="row-checkbox" value="{{ $publisher->id }}"></td>
                 <td>{{ $publisher->id }}</td>
                 <td>{{ $publisher->name }}</td>
                 <td>{{ $publisher->created_at }}</td>

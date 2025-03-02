@@ -15,12 +15,18 @@
         </x-slot:actions>
     </x-header>
     <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
+    @include('dashboard.discount.partials.filter')
     @stop
     @section('content')
-    @include('dashboard.discount.partials.filter')
+    <div class="d-flex col-3 justify-content-around my-2">
+        <x-delete-selected model="Discount" />
+        <x-import-excel model="Discount" />
+        <x-export-excel model="Discount" />
+    </div>
     <table class="table">
         <thead>
         <tr>
+            <th><input type="checkbox" id="select-all"></th>
             <th>{{__('discount.id')}}</th>
             <th>{{__('discount.code')}}</th>
             <th>{{__('discount.quantity')}}</th>
@@ -34,6 +40,7 @@
     <tbody>
         @foreach ($discounts as $discount)
             <tr>
+                <td><input type="checkbox" class="row-checkbox" value="{{ $discount->id }}"></td>
                 <td>{{ $discount->id }}</td>
                 <td>{{ $discount->code }}</td>
                 <td>{{ $discount->quantity }}</td>

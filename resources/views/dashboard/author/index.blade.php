@@ -15,13 +15,19 @@
         </x-slot:actions>
     </x-header>
     <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
+    @include('dashboard.author.partials.filter')
 @endsection
 
 @section('content')
-@include('dashboard.author.partials.filter')
+<div class="d-flex col-3 justify-content-around my-2">
+    <x-delete-selected model="Author" />
+    <x-import-excel model="Author" />
+    <x-export-excel model="Author" />
+</div>
     <table class="table">
         <thead>
         <tr>
+            <th><input type="checkbox" id="select-all"></th>
             <th>{{__('author.id')}}</th>
             <th>{{__('author.name')}}</th>
             <th>{{__('actions.created_at')}}</th>
@@ -32,6 +38,7 @@
     <tbody>
         @foreach ($authors as $author)
             <tr>
+                <td><input type="checkbox" class="row-checkbox" value="{{ $author->id }}"></td>
                 <td>{{ $author->id }}</td>
                 <td>{{ $author->name }}</td>
                 <td>{{ $author->created_at }}</td>

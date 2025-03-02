@@ -25,6 +25,7 @@ class ImportExcelController extends Controller
         try {
             Excel::import(new $modelImport, $request->file('file'));
         } catch (\Throwable $th) {
+            // dd($th);
             return redirect()->back()->with('error', 'error happended while importing file');
         }
         return redirect()->back()->with('success', 'All good');

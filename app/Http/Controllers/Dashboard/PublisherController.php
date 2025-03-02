@@ -32,7 +32,7 @@ class PublisherController extends Controller
     public function store(PublisherRequest $request)
     {
         Publisher::create($request->validated());
-        return redirect()->route('dashboard.publisher.index');
+        return redirect()->route('dashboard.publisher.index')->with('success', 'Publisher Created Successfully');
     }
 
     /**
@@ -57,7 +57,7 @@ class PublisherController extends Controller
     public function update(PublisherRequest $request, Publisher $publisher)
     {
         $publisher->update($request->validated());
-        return redirect()->route('dashboard.publisher.index');
+        return redirect()->route('dashboard.publisher.index')->with('success', 'Publisher Updated Successfully');;
     }
 
     /**
